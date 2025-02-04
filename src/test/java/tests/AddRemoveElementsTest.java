@@ -12,7 +12,7 @@ import java.util.List;
 public class AddRemoveElementsTest {
 
     @Test
-    public void addRemoveElements() {
+    public void addRemoveElementsTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
@@ -24,6 +24,5 @@ public class AddRemoveElementsTest {
         int expectedSize = 1;
         Assert.assertEquals(size, expectedSize);
         driver.close();
-
     }
 }
