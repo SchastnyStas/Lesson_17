@@ -9,16 +9,19 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class HoversTest {
+
+    WebDriver driver = new ChromeDriver();
+    Actions actions = new Actions(driver);
+
     @Test
-    public void userProfileRedirectionTest() {
+    public void firstUserProfileRedirectionTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        Actions actions = new Actions(driver);
         SoftAssert softAssert = new SoftAssert();
         String hoverSite = "https://the-internet.herokuapp.com/hovers";
         driver.get(hoverSite);
 
         //user 1
+
         WebElement userProfile1 = driver.findElement(By.xpath("//div[@class='figure'][1]"));
         actions.moveToElement(userProfile1).perform();
         WebElement nameLabel1 = driver.findElement(By.xpath("//h5[text() = 'name: user1']"));
@@ -28,7 +31,17 @@ public class HoversTest {
         WebElement viewFalseLink1 = driver.findElement(By.xpath("//h1[text() = 'Not Found']"));
         softAssert.assertFalse(viewFalseLink1.isDisplayed());
         driver.get(hoverSite);
-        //user2
+        softAssert.assertAll();
+        driver.close();
+    }
+
+    //user2
+    @Test
+    public void secondUserProfileRedirectionTest() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        SoftAssert softAssert = new SoftAssert();
+        String hoverSite = "https://the-internet.herokuapp.com/hovers";
+        driver.get(hoverSite);
         WebElement userProfile2 = driver.findElement(By.xpath("//div[@class='figure'][2]"));
         actions.moveToElement(userProfile2).perform();
         WebElement nameLabel2 = driver.findElement(By.xpath("//h5[text() = 'name: user2']"));
@@ -38,7 +51,20 @@ public class HoversTest {
         WebElement viewFalseLink2 = driver.findElement(By.xpath("//h1[text() = 'Not Found']"));
         softAssert.assertFalse(viewFalseLink2.isDisplayed());
         driver.get(hoverSite);
-        //user3
+        softAssert.assertAll();
+        driver.close();
+    }
+
+    //user3
+    @Test
+    public void thirdUserProfileRedirectionTest() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        Actions actions = new Actions(driver);
+        SoftAssert softAssert = new SoftAssert();
+        String hoverSite = "https://the-internet.herokuapp.com/hovers";
+        driver.get(hoverSite);
+
         WebElement userProfile3 = driver.findElement(By.xpath("//div[@class='figure'][3]"));
         actions.moveToElement(userProfile3).perform();
         WebElement nameLabel3 = driver.findElement(By.xpath("//h5[text() = 'name: user3']"));
@@ -47,7 +73,6 @@ public class HoversTest {
         actions.moveToElement(userProfile3).moveToElement(viewProfileLink3).click().perform();
         WebElement viewFalseLink3 = driver.findElement(By.xpath("//h1[text() = 'Not Found']"));
         softAssert.assertFalse(viewFalseLink3.isDisplayed());
-
         softAssert.assertAll();
         driver.close();
     }

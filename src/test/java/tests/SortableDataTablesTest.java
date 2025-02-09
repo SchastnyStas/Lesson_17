@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SortableDataTablesTest {
     @Test
-    public void typosTest() {
+    public void checkTablesTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/tables");

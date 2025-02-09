@@ -20,9 +20,7 @@ public class AddRemoveElementsTest {
         driver.findElement(By.xpath("//*[@onclick=\"addElement()\"]")).click();
         driver.findElement(By.xpath("//*[@class=\"added-manually\"]")).click();
         List<WebElement> buttons = driver.findElements(By.xpath("//div[@id='elements']/button"));
-        int size = buttons.size();
-        int expectedSize = 1;
-        Assert.assertEquals(size, expectedSize);
+        Assert.assertEquals(buttons.size(), 1);
         driver.close();
     }
 }
